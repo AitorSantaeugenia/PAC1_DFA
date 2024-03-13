@@ -1,0 +1,39 @@
+<div>
+    <h1>Test Reactive Forms App</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="checkLogin()">
+      <label for="email">Email: </label>
+      <input type="email" [formControl]="email" /> 
+      <label for="password">Password: </label>
+      <input type="password" [formControl]="password" />
+      <button type="submit" [disabled]="!loginForm.valid">Login</button>
+    </form>
+  </div>
+  
+  <div *ngIf="email.errors">
+    <span
+      style="color: red"
+      *ngIf="email.errors && (email.touched || email.dirty)"
+    >
+      <span *ngIf="email.errors.required">Email is required</span>
+  
+      <span *ngIf="email.errors.invalidKeyWord"
+        >Email info@uoc.edu is reservated for the system admin.</span
+      >
+    </span>
+  </div>
+  
+  <div *ngIf="password.errors">
+    <span
+      style="color: red"
+      *ngIf="password.errors && (password.touched || password.dirty)"
+    >
+      <span *ngIf="password.errors.required">Password is required</span>
+      <span *ngIf="password.errors.minlength"
+        >Password must be greater tha 8 characters</span
+      >
+    </span>
+
+    <br>
+    <a routerLink="/sign-in"><button class="btn btn-success pull-right" >Sign in</button></a>
+  </div>
+  
