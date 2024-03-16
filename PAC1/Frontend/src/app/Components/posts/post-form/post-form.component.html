@@ -61,7 +61,7 @@
 
   <div>
     <label for="category">Category:</label>
-    <select formControlName="category" multiple>
+    <select [formControl]="category" multiple>
       <option *ngFor="let category of categories" [value]="category.categoryId">{{ category.title }}</option>
     </select>
 

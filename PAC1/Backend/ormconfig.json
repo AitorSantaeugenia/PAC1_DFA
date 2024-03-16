@@ -3,7 +3,7 @@
   "host": "localhost",
   "port": 5432,
   "username": "postgres",
-  "password": "",
+  "password": "Ftaphoenix7.P7.",
   "database": "blog-uoc-project",
   "entities": ["dist/**/*.entity{.ts,.js}"],
   "synchronize": false,

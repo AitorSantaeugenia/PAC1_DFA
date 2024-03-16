@@ -67,7 +67,6 @@ export class PostFormComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     let errorResponse: any;
 
-    // Cargar las categorías independientemente del modo
     const userId = this.localStorageService.get('user_id');
     if (userId) {
       try {
@@ -164,18 +163,39 @@ export class PostFormComponent implements OnInit {
 
   async savePost() {
     this.isValidForm = false;
-
+  
     if (this.postForm.invalid) {
       return;
     }
-
+  
     this.isValidForm = true;
-    this.post = this.postForm.value;
+  
+    this.post.title = this.title.value;
+    this.post.description = this.description.value;
+    this.post.publication_date = this.publication_date.value;
+  
+    const selectedCategories = this.category.value;
+  
+    this.post.categories = [];
+    for (const categoryId of selectedCategories) {
+      const category = this.categories.find(c => c.categoryId === categoryId);
+      if (category) {
+        this.post.categories.push(category);
+      }
+    }
+  
+    try {
+      if (this.isUpdateMode) {
+        await this.editPost();
+      } else {
+        await this.createPost();
+      }
 
-    if (this.isUpdateMode) {
-      this.validRequest = await this.editPost();
-    } else {
-      this.validRequest = await this.createPost();
+      this.router.navigateByUrl('posts');
+    } catch (error) {
+
+      console.error('Error al guardar el post:', error);
+
     }
   }
 }
