@@ -1,0 +1,43 @@
+<div>
+  <h1>Message form</h1>
+  <p id="toastMessage"></p>
+  <form
+    *ngIf="messageForm"
+    [formGroup]="messageForm"
+    (ngSubmit)="saveMessage()"
+  >
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" [formControl]="title" />
+
+      <div *ngIf="title.errors">
+        <div
+          *ngIf="title.errors && isValidForm != null && !isValidForm"
+          [ngClass]="'error'"
+        >
+          <div *ngIf="title.errors.required">Title is required</div>
+
+          <div *ngIf="title.errors.maxlength">
+            Title can be max 150 characters long.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label for="description">Description:</label>
+      <input type="text" [formControl]="description" />
+
+      <div *ngIf="description.errors">
+        <div
+          *ngIf="description.errors && isValidForm != null && !isValidForm"
+          [ngClass]="'error'"
+        >
+          <div *ngIf="description.errors.required">Description is required</div>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit">SAVE</button>
+  </form>
+</div>

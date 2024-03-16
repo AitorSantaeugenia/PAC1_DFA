@@ -1,0 +1,24 @@
+<h2>Messages List</h2>
+<button (click)="createMessage()">ADD</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>TITLE</th>
+      <th>DESCRIPTION</th>
+      <th>ACTIONS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let msg of messages">
+      <td>{{ msg.id }}</td>
+      <td>{{ msg.title }}</td>
+      <td>{{ msg.description }}</td>
+      <td>
+        <button (click)="updateMessage(msg.id)">UPDATE</button>
+        <button (click)="deleteMessage(msg.id)">DELETE</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
