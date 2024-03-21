@@ -1,0 +1,25 @@
+{
+    "home": "Home",
+    "login": "Inicia sesión",
+    "register": "Regístrate",
+    "dashboard": "Dashboard",
+    "adminPost": "Admin. Posts",
+    "adminCateg": "Admin. Categorias",
+    "logout":"Logout",
+    "profile":"Perfil",
+    
+    "english": "Inglés",
+    "catalan": "Catalán",
+    "spanish": "Español",
+
+    "title": "Título",
+    "description": "Descripción",
+    "likes": "Me gusta",
+    "dislikes": "No me gusta",
+    "publiDate": "Fecha de publicación",
+    "publishedBy": "Publicado por",
+
+    "noPosts": "No se han encontrado publicaciones",
+    "placeHold1": "Buscar por texto..",
+    "placeHold2": "Buscar por alias.."
+}

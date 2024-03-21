@@ -1,0 +1,25 @@
+{
+    "home": "Home",
+    "login": "Login",
+    "register": "Register",
+    "dashboard": "Dashboard",
+    "adminPost": "Admin. Posts",
+    "adminCateg": "Admin. Categories",
+    "logout":"Logout",
+    "profile":"Profile",
+
+    "english": "English",
+    "catalan": "Catalan",
+    "spanish": "Spanish",
+
+    "title": "Title",
+    "description": "Description",
+    "likes": "Like",
+    "dislikes": "Dislike",
+    "publiDate": "Publication date",
+    "publishedBy": "Published by",
+
+    "noPosts": "No publications found",
+    "placeHold1": "Search by text..",
+    "placeHold2": "Search by alias.."
+}

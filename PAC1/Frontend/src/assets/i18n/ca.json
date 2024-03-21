@@ -1,0 +1,25 @@
+{
+    "home": "Home",
+    "login": "Inici de sessió",
+    "register": "Enregistrat",
+    "dashboard": "Dashboard",
+    "adminPost": "Admin. Posts",
+    "adminCateg": "Admin. Categoria",
+    "logout":"Logout",
+    "profile":"Perfil",
+
+    "english": "Anglès",
+    "catalan": "Català",
+    "spanish": "Espanyol",
+    
+    "title": "Títol",
+    "description": "Descripció",
+    "likes": "M'agrada",
+    "dislikes": "No m'agrada",
+    "publiDate": "Data de publicació",
+    "publishedBy": "Publicat per",
+
+    "noPosts": "No s'han trobat publicacions",
+    "placeHold1": "Cercar per text..",
+    "placeHold2": "Cercar per alias.."
+}
