@@ -77,4 +77,8 @@ export class HeaderComponent implements OnInit {
     // Redireccionamos
     this.router.navigateByUrl('home');
   }
+
+  dashboard(){
+    this.router.navigateByUrl('dashboard')
+  }
 }
