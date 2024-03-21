@@ -15,6 +15,12 @@ import { SharedService } from 'src/app/Services/shared.service';
 export class HomeComponent {
   posts!: PostDTO[];
   showButtons: boolean;
+
+  //Para filtrar
+  filteredPosts: PostDTO[] = [];
+  filterText: string = '';
+  filterAlias: string = '';
+  
   constructor(
     private postService: PostService,
     private localStorageService: LocalStorageService,
@@ -43,6 +49,8 @@ export class HomeComponent {
     if (userId) {
       try {
         this.posts = await this.postService.getPosts();
+        this.filteredPosts = [...this.posts];
+
       } catch (error: any) {
         errorResponse = error.error;
         this.sharedService.errorLog(errorResponse);
@@ -69,6 +77,26 @@ export class HomeComponent {
     } catch (error: any) {
       errorResponse = error.error;
       this.sharedService.errorLog(errorResponse);
+    }
+  }
+
+  filterPosts(): void {
+    const filterTextLower = this.filterText ? this.filterText.toLowerCase() : '';
+    const filterAliasLower = this.filterAlias ? this.filterAlias.toLowerCase() : '';
+  
+    this.filteredPosts = this.posts.filter(post => {
+      const postTitleLower = post.title.toLowerCase();
+      const postDescriptionLower = post.description.toLowerCase();
+      const postAliasLower = post.userAlias.toLowerCase();
+  
+      const matchesText = this.filterText ? postTitleLower.includes(filterTextLower) || postDescriptionLower.includes(filterTextLower) : true;
+      const matchesAlias = this.filterAlias ? postAliasLower.includes(filterAliasLower) : true;
+  
+      return matchesText && matchesAlias;
+    });
+  
+    if (!this.filterText && !this.filterAlias) {
+      this.filteredPosts = [...this.posts];
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { LocalStorageService } from 'src/app/Services/local-storage.service';
@@ -12,11 +13,13 @@ import { LocalStorageService } from 'src/app/Services/local-storage.service';
 export class HeaderComponent implements OnInit {
   showAuthSection: boolean;
   showNoAuthSection: boolean;
+  lang:string = '';
 
   constructor(
     private router: Router,
     private headerMenusService: HeaderMenusService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private translateService: TranslateService
   ) {
     this.showAuthSection = false;
     this.showNoAuthSection = true;
@@ -31,6 +34,8 @@ export class HeaderComponent implements OnInit {
         }
       }
     );
+
+    this.lang = localStorage.getItem('lang') || 'en';
   }
 
   home(): void {
@@ -80,5 +85,12 @@ export class HeaderComponent implements OnInit {
 
   dashboard(){
     this.router.navigateByUrl('dashboard')
+  }
+
+  ChangeLang(lang:any){
+    const selectedLanguage = lang.target.value;
+    localStorage.setItem('lang', selectedLanguage)
+
+    this.translateService.use(selectedLanguage)
   }
 }

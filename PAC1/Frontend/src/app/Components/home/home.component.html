@@ -33,19 +33,54 @@
 </style>
 
 <div class="container">
-    <div class="post-container" *ngFor="let post of posts">
-        <div class="container-Category">
-            <p *ngFor="let category of post.categories" class="p-category" [style.backgroundColor]="category.css_color">
-                {{ category.title }}
-            </p>
-        </div>
-        <h2>Title: {{ post.title }}</h2>
-        <p>Description: {{ post.description }}</p>
-        <p>Likes: {{ post.num_likes }}</p>
-        <p>Dislikes: {{ post.num_dislikes }}</p>
-        <p>Publication date: {{ post.publication_date | formatDate:4 }}</p>
-        <p>Published by: {{ post.userAlias }}</p>
-        <button *ngIf="showButtons" (click)="like(post.postId)">Like</button>
-        <button *ngIf="showButtons" (click)="dislike(post.postId)">Dislike</button>
+
+    <div class="filters">
+      <input [(ngModel)]="filterText" (input)="filterPosts()" placeholder="{{'placeHold1' | translate}}">
+      <input [(ngModel)]="filterAlias" (input)="filterPosts()" placeholder="{{'placeHold2' | translate}}">
     </div>
-</div>
+  
+    <div *ngIf="filteredPosts && filteredPosts.length > 0">
+      <!-- Si hay posts filtrados, mostramos -->
+      <div class="post-container" *ngFor="let post of filteredPosts">
+        <div class="container-Category">
+          <p *ngFor="let category of post.categories" class="p-category" [style.backgroundColor]="category.css_color">
+            {{ category.title }}
+          </p>
+        </div>
+        <h2>{{"title" | translate}}: {{ post.title }}</h2>
+        <p>{{"description" | translate}}: {{ post.description }}</p>
+        <p>{{"likes" | translate}}: {{ post.num_likes }}</p>
+        <p>{{"dislikes" | translate}}: {{ post.num_dislikes }}</p>
+        <p>{{"publiDate" | translate}} date: {{ post.publication_date | formatDate:4 }}</p>
+        <p>{{"publishedBy" | translate}}: {{ post.userAlias }}</p>
+        <button *ngIf="showButtons" (click)="like(post.postId)">{{"likes" | translate}}</button>
+        <button *ngIf="showButtons" (click)="dislike(post.postId)">{{"dislikes" | translate}}</button>
+      </div>
+    </div>
+  
+    <div *ngIf="(!filteredPosts || filteredPosts.length === 0) && posts && posts.length > 0">
+      <!-- Si no hay posts filtrados pero hay posts originales, mostrar los posts originales -->
+      <div class="post-container" *ngFor="let post of posts">
+        <div class="container-Category">
+          <p *ngFor="let category of post.categories" class="p-category" [style.backgroundColor]="category.css_color">
+            {{ category.title }}
+          </p>
+        </div>
+
+        <h2>{{"title" | translate}}: {{ post.title }}</h2>
+        <p>{{"description" | translate}}: {{ post.description }}</p>
+        <p>{{"likes" | translate}}: {{ post.num_likes }}</p>
+        <p>{{"dislikes" | translate}}: {{ post.num_dislikes }}</p>
+        <p>{{"publiDate" | translate}} date: {{ post.publication_date | formatDate:4 }}</p>
+        <p>{{"publishedBy" | translate}}: {{ post.userAlias }}</p>
+        <button *ngIf="showButtons" (click)="like(post.postId)">{{"likes" | translate}}</button>
+        <button *ngIf="showButtons" (click)="dislike(post.postId)">{{"dislikes" | translate}}</button>
+      </div>
+    </div>
+  
+    <div *ngIf="!posts || posts.length === 0">
+      <!-- Si no hay posts originales, mostrar un mensaje indicando que no hay posts -->
+      <p>{{"noPosts" | translate}}</p>
+    </div>
+  
+  </div>

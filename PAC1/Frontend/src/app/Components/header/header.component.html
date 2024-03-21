@@ -1,19 +1,23 @@
-<p>header works!</p>
-
 <!-- NO AUTH REQUIRED -->
 <div *ngIf="showNoAuthSection">
-  <button (click)="home()">Home</button>
-  <button (click)="login()">Login</button>
-  <button (click)="register()">Register</button>
-  <button (click)="dashboard()">Dashboard</button>
+  <button (click)="home()">{{"home" | translate}}</button>
+  <button (click)="login()">{{"login" | translate}}</button>
+  <button (click)="register()">{{"register" | translate}}</button>
+  <button (click)="dashboard()">{{"dashboard" | translate}}</button>
 </div>
 
 <!-- AUTH REQUIRED -->
 <div *ngIf="showAuthSection">
-  <button (click)="home()">Home</button>
-  <button (click)="adminPosts()">Admin posts</button>
-  <button (click)="adminCategories()">Admin categories</button>
-  <button (click)="profile()">Profile</button>
-  <button (click)="dashboard()">Dashboard</button>
-  <button (click)="logout()">Logout</button>
+  <button (click)="home()">{{"home" | translate}}</button>
+  <button (click)="adminPosts()">{{"adminPost" | translate}}</button>
+  <button (click)="adminCategories()">{{"adminCateg" | translate}}</button>
+  <button (click)="profile()">{{"profile" | translate}}</button>
+  <button (click)="dashboard()">{{"dashboard" | translate}}</button>
+  <button (click)="logout()">{{"logout" | translate}}</button>
 </div>
+
+<select class="form-select" (change)="ChangeLang($event)" name="" id="">
+  <option value="en">{{"english" | translate}}</option>
+  <option value="ca">{{"catalan" | translate}}</option>
+  <option value="es">{{"spanish" | translate}}</option>
+</select>
