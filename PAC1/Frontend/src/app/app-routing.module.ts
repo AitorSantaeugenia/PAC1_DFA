@@ -8,6 +8,7 @@ import { PostFormComponent } from './Components/posts/post-form/post-form.compon
 import { PostsListComponent } from './Components/posts/posts-list/posts-list.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { RegisterComponent } from './Components/register/register.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component'
 import { AuthGuard } from './Guards/auth.guard';
 
 const routes: Routes = [
@@ -51,6 +52,10 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
   },
 ];
 
