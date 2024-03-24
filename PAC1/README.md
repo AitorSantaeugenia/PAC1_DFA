@@ -30,4 +30,5 @@
 
 
 - Hecho todo, hasta el i18n (solo la página HOME) y el filtro (solo por alias o palabra)
+- Puedes ver el proyecto en https://github.com/AitorSantaeugenia/PAC1_DFA/tree/main/PAC1
 
